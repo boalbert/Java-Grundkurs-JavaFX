@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -31,10 +33,10 @@ public class CreateAccount extends Application {
         TextField lastName = new TextField();
         TextField email = new TextField();
         PasswordField password = new PasswordField();
-        Text unText = new Text("First Name");
-        Text lnText = new Text("Last Name");
-        Text eText = new Text("Email");
-        Text pwText = new Text("Password");
+        Text unText = new Text("First Name"); unText.setId("text");
+        Text lnText = new Text("Last Name"); lnText.setId("text");
+        Text eText = new Text("Email"); eText.setId("text");
+        Text pwText = new Text("Password"); pwText.setId("text");
         Label createHeader = new Label("Create New Account");
         Button create = new Button("Create");
         Button cancel = new Button("Cancel");
@@ -83,7 +85,19 @@ public class CreateAccount extends Application {
         Scene sceneCA = new Scene(gridCA);
         stage.setScene(sceneCA);
         stage.setTitle("Create Account");
-        sceneCA.getStylesheets().add("sample/stylesheet.css");
+
+        sceneCA.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                KeyCode key = keyEvent.getCode();
+                if(key == KeyCode.ESCAPE)   {
+                    stage.close();
+                    LoginStage1 loginStage1 = new LoginStage1();
+                    loginStage1.start(stage);
+                }
+            }
+        });
+
         stage.show();
     }
 }

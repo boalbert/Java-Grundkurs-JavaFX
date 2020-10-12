@@ -1,6 +1,9 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -9,6 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -39,12 +44,22 @@ public class LoginStage1 extends Application {
             createAccount.start(stage);
         });
 
+        Button btnExit = new Button("Exit");
+        btnExit.setStyle("-fx-background-color: #bf2b2b");
+        btnExit.setCancelButton(true);
+        btnExit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                stage.close();
+            }
+        });
+
+
         Button btnLogin = new Button("Login");
         btnLogin.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-        // TODO Add functionality for Login -> Go to Booking Scene
         btnLogin.setOnAction(actionEvent -> {
+            System.out.println("Username accepted");
             if (Controller.customerMap.containsKey(tfEmail.getText()))    {
-                System.out.println("Username accepted");
                 if (tfPassword.getText().equals(Controller.customerMap.get(tfEmail.getText()).getPassword())) {
                     System.out.println("Password accepted");
                     BookingStage2 bookingStage2 = new BookingStage2();
@@ -53,11 +68,8 @@ public class LoginStage1 extends Application {
                 else System.out.println("Invalid password");
             }
             else System.out.println("Denied");
-
-//            BookingStage2 bookingStage2 = new BookingStage2();
-//            bookingStage2.start(stage);
-
         });
+
 
         // Created GridPane
         GridPane gridPane = new GridPane();
@@ -73,6 +85,7 @@ public class LoginStage1 extends Application {
         gridPane.add(lblHeader, 0, 0, 2, 1);
         // Centering lblHeader
         GridPane.setHalignment(lblHeader, HPos.CENTER);
+        gridPane.setHalignment(btnExit, HPos.CENTER);
 
 
         // Textfields
@@ -81,6 +94,7 @@ public class LoginStage1 extends Application {
         // Button
         gridPane.add(btnCreateAccount, 0, 2);
         gridPane.add(btnLogin, 1, 2);
+        gridPane.add(btnExit,0,4);
 
         // Creating scene
         Scene scene = new Scene(gridPane);
@@ -89,10 +103,25 @@ public class LoginStage1 extends Application {
         // Setting stylesheet
         scene.getStylesheets().add("sample/stylesheet.css");
 
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                KeyCode key = keyEvent.getCode();
+                if (key == KeyCode.ENTER)   {
+                }
+            }
+        });
+
+        btnLogin.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                KeyCode key = keyEvent.getCode();
+                if(key == KeyCode.ESCAPE)   {
+                    stage.close();
+                }
+            }
+        });
+
         stage.show();
-
-
     }
-
-
 }
