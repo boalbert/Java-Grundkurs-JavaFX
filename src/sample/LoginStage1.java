@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 public class LoginStage1 extends Application {
 
-    public void start(Stage stage) throws Exception{
+    public void start(Stage stage) {
 
         stage.setTitle("Login");
 
@@ -35,6 +35,8 @@ public class LoginStage1 extends Application {
         // TODO Add functionality for Create account -> Go to Stage1.1
         btnCreateAccount.setOnAction(actionEvent -> {
             // Kod för att gå till Stage1.1CreateAccount
+            CreateAccount createAccount = new CreateAccount();
+            createAccount.start(stage);
         });
 
         Button btnLogin = new Button("Login");
