@@ -14,6 +14,13 @@ public class Main extends Application {
         Controller.customerMap.put(test.getEmail(), test);
         Save.saveMap(Controller.customerMap);
         Controller.printMap();
+
+        Save.readMovieFile();
+        Movies movie1 = new Movies("Interstellar");
+        Controller.moviesHashMap.put(movie1.getTitle(), movie1);
+        Save.saveMovieMap(Controller.moviesHashMap);
+        Controller.printMovieMap();
+
         launch(args);
     }
 
