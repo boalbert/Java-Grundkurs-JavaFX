@@ -8,17 +8,19 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
-    }
-
 
     public static void main(String[] args) {
+        Save.readFile();
+        Customer test = new Customer("Casper","Konyi","casper.konyi@iths.se","casper123");
+        Controller.customerMap.put(test.getEmail(), test);
+        Save.saveMap(Controller.customerMap);
+        Controller.printMap();
         launch(args);
-        System.out.println("Tjenare");
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+
+
     }
 }
