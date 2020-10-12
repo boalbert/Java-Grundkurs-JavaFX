@@ -6,7 +6,6 @@ import java.util.HashMap;
 
 public class Save {
 
-
     public static void saveMap(HashMap<String,Customer> map) {
 
         try {
