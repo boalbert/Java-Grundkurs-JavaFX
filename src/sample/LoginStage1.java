@@ -47,7 +47,8 @@ public class LoginStage1 extends Application {
                 System.out.println("Username accepted");
                 if (tfPassword.getText().equals(Controller.customerMap.get(tfEmail.getText()).getPassword())) {
                     System.out.println("Password accepted");
-                    stage.close();
+                    BookingStage2 bookingStage2 = new BookingStage2();
+                    bookingStage2.start(stage);
                 }
                 else System.out.println("Invalid password");
             }

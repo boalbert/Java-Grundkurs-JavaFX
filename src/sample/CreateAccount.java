@@ -39,6 +39,9 @@ public class CreateAccount extends Application {
         Button create = new Button("Create");
         Button cancel = new Button("Cancel");
 
+        create.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        cancel.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
         createHeader.setId("header-text");
         gridCA.add(createHeader, 0, 0, 2, 1);
         gridCA.setHalignment(createHeader, HPos.CENTER);
@@ -72,6 +75,8 @@ public class CreateAccount extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 stage.close();
+                LoginStage1 loginStage1 = new LoginStage1();
+                loginStage1.start(stage);
             }
         });
 
