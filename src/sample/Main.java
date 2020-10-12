@@ -1,16 +1,13 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
     public static void main(String[] args) {
         Save.readFile();
-        Customer test = new Customer("Casper","Konyi","casper.konyi@iths.se","casper123");
+        Customer test = new Customer("Casper", "Konyi", "casper.konyi@iths.se", "casper123");
         Controller.customerMap.put(test.getEmail(), test);
         Save.saveMap(Controller.customerMap);
         Controller.printMap();

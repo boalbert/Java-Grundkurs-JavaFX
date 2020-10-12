@@ -3,11 +3,9 @@ package sample;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -25,7 +23,7 @@ public class CreateAccount extends Application {
         GridPane gridCA = new GridPane();
         gridCA.setMinSize(400, 200);
         gridCA.setAlignment(Pos.CENTER);
-        gridCA.setPadding(new Insets(10, 10,10,10));
+        gridCA.setPadding(new Insets(10, 10, 10, 10));
         gridCA.setHgap(5);
         gridCA.setVgap(5);
 
@@ -42,19 +40,19 @@ public class CreateAccount extends Application {
         Button cancel = new Button("Cancel");
 
         createHeader.setId("header-text");
-        gridCA.add(createHeader,0,0,2,1);
+        gridCA.add(createHeader, 0, 0, 2, 1);
         gridCA.setHalignment(createHeader, HPos.CENTER);
 
         gridCA.add(firstName, 1, 1);
-        gridCA.add(lastName, 1,2);
-        gridCA.add(email,1,3);
-        gridCA.add(password,1,4);
+        gridCA.add(lastName, 1, 2);
+        gridCA.add(email, 1, 3);
+        gridCA.add(password, 1, 4);
         gridCA.add(unText, 0, 1);
         gridCA.add(lnText, 0, 2);
         gridCA.add(eText, 0, 3);
-        gridCA.add(pwText,0 ,4);
+        gridCA.add(pwText, 0, 4);
         gridCA.add(create, 0, 5);
-        gridCA.add(cancel,1,5);
+        gridCA.add(cancel, 1, 5);
 
         create.setOnAction(new EventHandler<ActionEvent>() {
             @Override

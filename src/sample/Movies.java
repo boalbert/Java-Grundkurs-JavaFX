@@ -9,6 +9,10 @@ public class Movies implements Serializable {
     private String title;
     private int seats = 20;
 
+    public Movies(String title) {
+        this.title = title;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -23,9 +27,5 @@ public class Movies implements Serializable {
 
     public void setSeats(int seats) {
         this.seats = seats;
-    }
-
-    public Movies(String title) {
-        this.title = title;
     }
 }

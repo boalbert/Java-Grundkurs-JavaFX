@@ -28,7 +28,7 @@ public class BookingStage2 extends Application {
         stage.setScene(scene);
 
         //Setting stylesheet
-        scene.getStylesheets().add("samle/stylesheet.css");
+        scene.getStylesheets().add("sample/stylesheet.css");
 
         stage.show();
 
