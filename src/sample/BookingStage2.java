@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 public class BookingStage2 extends Application {
 
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
 
         stage.setTitle("Booking");
 

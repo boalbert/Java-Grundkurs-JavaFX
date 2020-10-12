@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -26,7 +27,7 @@ public class LoginStage1 extends Application {
         // Email and Password
         TextField tfEmail= new TextField();
         tfEmail.setPromptText("E-Mail");
-        TextField tfPassword = new TextField();
+        PasswordField tfPassword = new PasswordField();
         tfPassword.setPromptText("Password");
 
         // Buttons
@@ -43,6 +44,15 @@ public class LoginStage1 extends Application {
         btnLogin.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         // TODO Add functionality for Login -> Go to Booking Scene
         btnLogin.setOnAction(actionEvent -> {
+            if (Controller.customerMap.containsKey(tfEmail.getText()))    {
+                System.out.println("Username accepted");
+                if (tfPassword.getText().equals(Controller.customerMap.get(tfEmail.getText()).getPassword())) {
+                    System.out.println("Password accepted");
+                    stage.close();
+                }
+                else System.out.println("Invalid password");
+            }
+            else System.out.println("Denied");
 
 //            BookingStage2 bookingStage2 = new BookingStage2();
 //            bookingStage2.start(stage);
