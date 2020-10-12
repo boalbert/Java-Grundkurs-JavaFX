@@ -1,6 +1,6 @@
 .root {
     -fx-font-size: 12;
-    -fx-font-family: "SansSerif";
+    -fx-font-family: Arial;
     -fx-background-color: beige;
     -fx-text-fill: #000000;
     -fx-border-color: cornflowerblue;
@@ -8,11 +8,11 @@
 
 #text   {
     -fx-font-size: 12;
-    -fx-font-weight: bold;
     -fx-font-family: Arial;
 }
 
 #header-text {
     -fx-font-weight: Bold;
-    -fx-font-size: 16;
+    -fx-font-size: 20;
+    -fx-font-family: Arial;
 }

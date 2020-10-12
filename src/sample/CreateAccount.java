@@ -29,22 +29,21 @@ public class CreateAccount extends Application {
         gridCA.setHgap(5);
         gridCA.setVgap(5);
 
-        TextField firstName = new TextField();
-        TextField lastName = new TextField();
-        TextField email = new TextField();
-        PasswordField password = new PasswordField();
+        TextField firstName = new TextField();  firstName.setPromptText("Minimum length 3...");
+        TextField lastName = new TextField();   lastName.setPromptText("Minimum length 3...");
+        TextField email = new TextField();  email.setPromptText("Must contain < @ > ");
+        PasswordField password = new PasswordField();   password.setPromptText("Minimum length 3...");
         Text unText = new Text("First Name"); unText.setId("text");
         Text lnText = new Text("Last Name"); lnText.setId("text");
         Text eText = new Text("Email"); eText.setId("text");
         Text pwText = new Text("Password"); pwText.setId("text");
-        Label createHeader = new Label("Create New Account");
+        Label createHeader = new Label("Create New Account");   createHeader.setId("header-text");
         Button create = new Button("Create");
         Button cancel = new Button("Cancel");
 
         create.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         cancel.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
-        createHeader.setId("header-text");
         gridCA.add(createHeader, 0, 0, 2, 1);
         gridCA.setHalignment(createHeader, HPos.CENTER);
 
@@ -62,13 +61,16 @@ public class CreateAccount extends Application {
         create.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                Customer newCustomer = new Customer(firstName.getText(), lastName.getText(), email.getText(), password.getText());
-                Controller.customerMap.put(newCustomer.getEmail(), newCustomer);
-                Save.saveMap(Controller.customerMap);
-                System.out.println("Customer added to HashMap(customerMap)");
-                stage.close();
-                LoginStage1 loginStage1 = new LoginStage1();
-                loginStage1.start(stage);
+                if (firstName.getLength() >= 2 && lastName.getLength() >= 2 && password.getLength() >= 5 && email.getText().contains("@")) {
+                    Customer newCustomer = new Customer(firstName.getText(), lastName.getText(), email.getText(), password.getText());
+                    Controller.customerMap.put(newCustomer.getEmail(), newCustomer);
+                    Save.saveMap(Controller.customerMap);
+                    System.out.println("Customer added to HashMap(customerMap)");
+                    stage.close();
+                    LoginStage1 loginStage1 = new LoginStage1();
+                    loginStage1.start(stage);
+                }
+                else System.out.println("Error, please fill out boxes");
             }
         });
 
@@ -98,6 +100,25 @@ public class CreateAccount extends Application {
             }
         });
 
+        sceneCA.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                KeyCode key = keyEvent.getCode();
+                if (key == KeyCode.ENTER)   {
+                    if (firstName.getLength() >= 2 && lastName.getLength() >= 2 && password.getLength() >= 5 && email.getText().contains("@")) {
+                        Customer newCustomer = new Customer(firstName.getText(), lastName.getText(), email.getText(), password.getText());
+                        Controller.customerMap.put(newCustomer.getEmail(), newCustomer);
+                        Save.saveMap(Controller.customerMap);
+                        System.out.println("Customer added to HashMap(customerMap)");
+                        stage.close();
+                        LoginStage1 loginStage1 = new LoginStage1();
+                        loginStage1.start(stage);
+                    }
+                    else System.out.println("Error : <CreateAccount> / Button [create] | Method setOnKeyPress");
+                }
+            }
+        });
+        sceneCA.getStylesheets().add("sample/stylesheet.css");
         stage.show();
     }
 }

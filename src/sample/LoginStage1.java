@@ -38,6 +38,7 @@ public class LoginStage1 extends Application {
         Button btnCreateAccount = new Button("Create Account");
         btnCreateAccount.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         // TODO Add functionality for Create account -> Go to Stage1.1
+
         btnCreateAccount.setOnAction(actionEvent -> {
             // Kod för att gå till Stage1.1CreateAccount
             CreateAccount createAccount = new CreateAccount();
