@@ -42,8 +42,10 @@ public class LoginStage1 extends Application {
         // TODO Add functionality for Login -> Go to Booking Scene
         btnLogin.setOnAction(actionEvent -> {
 
-        });
+//            BookingStage2 bookingStage2 = new BookingStage2();
+//            bookingStage2.start(stage);
 
+        });
 
         // Created GridPane
         GridPane gridPane = new GridPane();
@@ -67,12 +69,6 @@ public class LoginStage1 extends Application {
         // Button
         gridPane.add(btnCreateAccount,0,2);
         gridPane.add(btnLogin,1,2);
-
-
-
-//
-//        GridPane.setFillWidth(btnLogin, true);
-//        GridPane.setFillHeight(btnLogin, true);
 
         // Creating scene
         Scene scene = new Scene(gridPane);

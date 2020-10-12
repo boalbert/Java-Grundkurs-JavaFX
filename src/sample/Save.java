@@ -38,6 +38,39 @@ public class Save {
 
         } catch(Exception e) { e.printStackTrace(); }
     }
+
+    // Movies
+    public static void saveMovieMap(HashMap<String,Movies> map) {
+
+        try {
+            File file = new File("MovieDatabase");
+            FileOutputStream fos = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeObject(map);
+
+            oos.close();
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("Movies has been updated!");
+    }
+
+    public static void readMovieFile()   {
+        try {
+            FileInputStream fis = new FileInputStream("MovieDatabase");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+
+            HashMap<String,Movies> mapInFile = (HashMap<String,Movies>)ois.readObject();
+            ois.close();
+            fis.close();
+
+            Controller.moviesHashMap = mapInFile;
+            System.out.println("Loading Movie-Database...");
+
+        } catch(Exception e) { e.printStackTrace(); }
+    }
 }
 
 
