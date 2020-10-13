@@ -33,11 +33,12 @@ public class CreateAccount extends Application {
         TextField lastName = new TextField();   lastName.setPromptText("Must contain 3 letters");
         TextField email = new TextField();  email.setPromptText("Must contain < @ > ");
         PasswordField password = new PasswordField();   password.setPromptText("Must contain 5 letters");
-        PasswordField passwordRe = new PasswordField();   password.setPromptText("Must contain 5 letters");
+        PasswordField passwordRe = new PasswordField();   passwordRe.setPromptText("Must contain 5 letters");
         Text unText = new Text("First Name"); unText.setId("text");
         Text lnText = new Text("Last Name"); lnText.setId("text");
         Text eText = new Text("Email"); eText.setId("text");
         Text pwText = new Text("Password"); pwText.setId("text");
+        Text reText = new Text("Re-Password"); reText.setId("text");
         Label createHeader = new Label("Create New Account");   createHeader.setId("header-text");
         Button create = new Button("Create");
         Button cancel = new Button("Cancel");
@@ -59,6 +60,7 @@ public class CreateAccount extends Application {
         gridCA.add(lnText, 0, 2);
         gridCA.add(eText, 0, 3);
         gridCA.add(pwText, 0, 4);
+        gridCA.add(reText,0,5);
         gridCA.add(create, 0, 6);
         gridCA.add(cancel, 1, 6);
         gridCA.add(errorText, 0, 7,2,1);
