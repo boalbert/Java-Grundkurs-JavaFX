@@ -6,16 +6,11 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     public static void main(String[] args) {
-        Save.readFile();
-        Customer test = new Customer("Casper", "Konyi", "casper.konyi@iths.se", "casper123");
-        Controller.customerMap.put(test.getEmail(), test);
-        Save.saveMap(Controller.customerMap);
-        Controller.printMap();
 
+        // Loading database's
+        Save.readFile();
         Save.readMovieFile();
-        Movies movie1 = new Movies("Interstellar");
-        Controller.moviesHashMap.put(movie1.getTitle(), movie1);
-        Save.saveMovieMap(Controller.moviesHashMap);
+        Controller.printMap();
         Controller.printMovieMap();
 
         launch(args);

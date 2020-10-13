@@ -2,6 +2,7 @@ package sample;
 
 import javafx.application.Application;
 import javafx.beans.InvalidationListener;
+import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -35,27 +36,44 @@ public class BookingStage2 extends Application {
         gridBooking.setAlignment(Pos.CENTER);
         gridBooking.setVgap(5);
         gridBooking.setHgap(5);
-        Button accept = new Button("Accept");
+        Button accept = new Button("Confirm");
         Button cancel = new Button("Cancel");
         Label bookingHeader = new Label("Booking");
         Text selectMovie = new Text("Movie");
         Text selectDate = new Text("Select Date");
         Text selectSeats = new Text("Seats");
+
         DatePicker datePicker = new DatePicker();
 
-        MenuItem movie1 = new MenuItem("Interstellar");
-        MenuItem movie2 = new MenuItem("Batman: Begins");
-        MenuItem movie3 = new MenuItem("Ett Päron Till Farsan: 2");
-        MenuButton movieButton = new MenuButton("Select", null, movie1, movie2, movie3);
-        //MenuButton seatsButton = new MenuButton("Select", null);
+        ObservableList<String> optionsMovies =
+                FXCollections.observableArrayList(
+                        "Interstellar",
+                        "Option 2",
+                        "Option 3"
+                );
+        final ComboBox comboBoxMovies = new ComboBox(optionsMovies);
+
+
+        ObservableList<String> optionsSeasts =
+                FXCollections.observableArrayList(
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                );
+        final ComboBox comboBoxSeats = new ComboBox(optionsSeasts);
 
         gridBooking.setHalignment(bookingHeader, HPos.CENTER);
         gridBooking.add(bookingHeader,0,0,2,1);
         bookingHeader.setId("booking-header");
         bookingHeader.setStyle("-fx-text-fill: black; -fx-font-size: 30;");
 
-        gridBooking.add(movieButton, 1,2);
-        //gridBooking.add(seatsButton,1,3);
+        gridBooking.add(comboBoxMovies, 1,2);
+        gridBooking.add(comboBoxSeats,1,3);
         gridBooking.add(accept, 0,5);
         gridBooking.add(cancel,1,5);
         gridBooking.add(selectMovie, 0,2);

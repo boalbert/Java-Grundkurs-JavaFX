@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class LoginStage1 extends Application {
@@ -34,11 +36,13 @@ public class LoginStage1 extends Application {
         PasswordField tfPassword = new PasswordField();
         tfPassword.setPromptText("Password");
 
+        // Text for displaying error messages!
+        Text errorText = new Text("Wrong Username/Email or Password!");
+        errorText.setVisible(false);
+
         // Buttons
         Button btnCreateAccount = new Button("Create Account");
         btnCreateAccount.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-        // TODO Add functionality for Create account -> Go to Stage1.1
-
         btnCreateAccount.setOnAction(actionEvent -> {
             // Kod för att gå till Stage1.1CreateAccount
             CreateAccount createAccount = new CreateAccount();
@@ -46,7 +50,8 @@ public class LoginStage1 extends Application {
         });
 
         Button btnExit = new Button("Exit");
-        btnExit.setStyle("-fx-background-color: #bf2b2b");
+        btnExit.setStyle("-fx-background-color: #d73e3e");
+        btnExit.setAlignment(Pos.BOTTOM_CENTER);
         btnExit.setCancelButton(true);
         btnExit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -55,7 +60,6 @@ public class LoginStage1 extends Application {
             }
         });
 
-
         Button btnLogin = new Button("Login");
         btnLogin.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         btnLogin.setOnAction(actionEvent -> {
@@ -63,14 +67,21 @@ public class LoginStage1 extends Application {
             if (Controller.customerMap.containsKey(tfEmail.getText()))    {
                 if (tfPassword.getText().equals(Controller.customerMap.get(tfEmail.getText()).getPassword())) {
                     System.out.println("Password accepted");
+                    errorText.setVisible(false);
                     BookingStage2 bookingStage2 = new BookingStage2();
                     bookingStage2.start(stage);
-                }
-                else System.out.println("Invalid password");
-            }
-            else System.out.println("Denied");
-        });
 
+                }
+                else {
+                    errorText.setText("Wrong Password!");
+                    errorText.setVisible(true);
+                }
+            }
+            else {
+                errorText.setText("Wrong Username!");
+                errorText.setVisible(true);
+            }
+        });
 
         // Created GridPane
         GridPane gridPane = new GridPane();
@@ -82,11 +93,17 @@ public class LoginStage1 extends Application {
         gridPane.setVgap(5);
         gridPane.setHgap(5);
 
+        // Error text
+        gridPane.add(errorText,0,3,2,1);
+        gridPane.setHalignment(errorText, HPos.CENTER);
+
+
         // Added placeholder text
         gridPane.add(lblHeader, 0, 0, 2, 1);
         // Centering lblHeader
         GridPane.setHalignment(lblHeader, HPos.CENTER);
-        gridPane.setHalignment(btnExit, HPos.CENTER);
+        gridPane.setValignment(btnExit, VPos.BOTTOM);
+        gridPane.setHalignment(btnExit, HPos.RIGHT);
 
 
         // Textfields
@@ -95,7 +112,7 @@ public class LoginStage1 extends Application {
         // Button
         gridPane.add(btnCreateAccount, 0, 2);
         gridPane.add(btnLogin, 1, 2);
-        gridPane.add(btnExit,0,4);
+        gridPane.add(btnExit,1,5);
 
         // Creating scene
         Scene scene = new Scene(gridPane);
