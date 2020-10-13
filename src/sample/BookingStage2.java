@@ -24,6 +24,7 @@ import javafx.scene.shape.Box;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.Collections;
 
 public class BookingStage2 extends Application {
@@ -36,36 +37,34 @@ public class BookingStage2 extends Application {
         gridBooking.setAlignment(Pos.CENTER);
         gridBooking.setVgap(5);
         gridBooking.setHgap(5);
-        Button accept = new Button("Confirm");
         Button cancel = new Button("Cancel");
         Label bookingHeader = new Label("Booking");
         Text selectMovie = new Text("Movie");
         Text selectDate = new Text("Select Date");
         Text selectSeats = new Text("Seats");
-
         DatePicker datePicker = new DatePicker();
 
         ObservableList<String> optionsMovies =
-                FXCollections.observableArrayList(
-                        "Interstellar",
-                        "Option 2",
-                        "Option 3"
-                );
+            FXCollections.observableArrayList(
+
+            );
         final ComboBox comboBoxMovies = new ComboBox(optionsMovies);
 
-
-        ObservableList<String> optionsSeasts =
+        ObservableList<Integer> optionsSeasts =
                 FXCollections.observableArrayList(
-                        "1",
-                        "2",
-                        "3",
-                        "4",
-                        "5",
-                        "6",
-                        "7",
-                        "8"
+                        1,2,3,4,5,6,7,8,9,10
                 );
         final ComboBox comboBoxSeats = new ComboBox(optionsSeasts);
+
+        Button accept = new Button("Confirm");
+        accept.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println(datePicker.getValue());
+                System.out.println(comboBoxMovies.getValue());
+                System.out.println(comboBoxSeats.getValue());
+            }
+        });
 
         gridBooking.setHalignment(bookingHeader, HPos.CENTER);
         gridBooking.add(bookingHeader,0,0,2,1);

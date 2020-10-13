@@ -1,5 +1,6 @@
 package sample;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,6 +8,7 @@ public class Controller {
 
     public static HashMap<String, Customer> customerMap = new HashMap<>();
     public static HashMap<String, Movies> moviesHashMap = new HashMap<>();
+    public static ArrayList<Movies> moviesArrayList = new ArrayList<>();
 
     public static void printMap() {
         for (Map.Entry<String, Customer> m : Controller.customerMap.entrySet()) {

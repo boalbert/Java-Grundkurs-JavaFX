@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.scene.control.Control;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -10,9 +11,6 @@ public class Main extends Application {
         // Loading database's
         Save.readFile();
         Save.readMovieFile();
-        Controller.printMap();
-        Controller.printMovieMap();
-
         launch(args);
     }
 
