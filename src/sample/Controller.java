@@ -11,6 +11,8 @@ public class Controller {
     public static ArrayList<Movies> moviesArrayList = new ArrayList<>();
 
     public static String choiceMovie;
+    public static String choiceSeats;
+    public static String choiceDate;
 
     public static void printMap() {
         for (Map.Entry<String, Customer> m : Controller.customerMap.entrySet()) {

@@ -24,9 +24,6 @@ import javafx.scene.shape.Box;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 public class BookingStage2 extends Application {
 
     public void start(Stage stage) {
@@ -61,14 +58,15 @@ public class BookingStage2 extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 Controller.choiceMovie = comboBoxMovies.getValue().toString();
+                Controller.choiceDate = datePicker.getValue().toString();
+                Controller.choiceSeats = comboBoxSeats.getValue().toString();
                 System.out.println(datePicker.getValue());
                 System.out.println(comboBoxMovies.getValue());
                 System.out.println(comboBoxSeats.getValue());
 
                 stage.close();
-                Payment payment = new Payment();
-                payment.start(stage);
-
+                OrderConfirmation orderConfirmation = new OrderConfirmation();
+                orderConfirmation.start(stage);
             }
         });
 
@@ -90,7 +88,6 @@ public class BookingStage2 extends Application {
         stage.setScene(sceneBS);
         stage.setTitle("Booking");
 
-
         cancel.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -111,6 +108,25 @@ public class BookingStage2 extends Application {
                 }
             }
         });
+
+        sceneBS.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                KeyCode key = keyEvent.getCode();
+                if (key == KeyCode.ENTER) {
+
+                    Controller.choiceMovie = comboBoxMovies.getValue().toString();
+                    System.out.println(datePicker.getValue());
+                    System.out.println(comboBoxMovies.getValue());
+                    System.out.println(comboBoxSeats.getValue());
+
+                    stage.close();
+                    OrderConfirmation orderConfirmation = new OrderConfirmation();
+                    orderConfirmation.start(stage);
+                }
+            }
+        });
+
         sceneBS.getStylesheets().add("sample/stylesheet.css");
         stage.show();
     }

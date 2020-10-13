@@ -16,3 +16,9 @@
     -fx-font-size: 20;
     -fx-font-family: Arial;
 }
+
+#displayText    {
+    -fx-font-weight: Bold;
+    -fx-font-size: 18;
+    -fx-font-family: Arial;
+}

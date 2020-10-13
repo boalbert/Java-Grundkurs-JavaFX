@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -31,9 +32,9 @@ public class OrderConfirmation extends Application {
         gridPane.setVgap(5);
 
         Label label = new Label("Order Confirmation");
-        Text text1 = new Text("Movie: "+ Controller.choiceMovie);
-        Text text2 = new Text();
-        Text text3 = new Text();
+        Text text1 = new Text("Movie: "+ Controller.choiceMovie); text1.setId("displayText");
+        Text text2 = new Text("Seats: "+Controller.choiceSeats);    text2.setId("displayText");
+        Text text3 = new Text("Date: "+Controller.choiceDate);  text3.setId("displayText");
         Button accept = new Button("Accept");
         Button cancel = new Button("Cancel");
 
@@ -47,6 +48,24 @@ public class OrderConfirmation extends Application {
         Scene sceneOC = new Scene(gridPane);
         stage.setScene(sceneOC);
         stage.setTitle("Order Confirmation");
+
+        accept.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                stage.close();
+                Payment payment = new Payment();
+                payment.start(stage);
+            }
+        });
+
+        cancel.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                stage.close();
+                BookingStage2 bookingStage2 = new BookingStage2();
+                bookingStage2.start(stage);
+            }
+        });
 
         sceneOC.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override

@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 public class Payment extends Application {
 
     @Override
-    public void start(Stage stage4) {
+    public void start(Stage stage) {
 
 
         //DropDown menu for payment options
@@ -29,7 +29,7 @@ public class Payment extends Application {
         cbPaymentOptions.setPromptText("Credit Card Options");
 
         TextField tfCreditCardNumber = new TextField();
-        tfCreditCardNumber.setPromptText("Credit Card Number");
+        tfCreditCardNumber.setPromptText("xxxx xxxx xxxx xxxx");
 
         TextField tfValid = new TextField();
         tfValid.setPromptText("Valid Thru (month-year)");
@@ -74,29 +74,29 @@ public class Payment extends Application {
 
         gridPane4.add(tInfo,0,10);
 
-        stage4.setTitle("Payment");
-        Scene scene4 = new Scene(gridPane4, 400, 400);
-        stage4.setScene(scene4);
-        stage4.show();
-
+        stage.setTitle("Payment");
+        Scene scene= new Scene(gridPane4, 400, 400);
+        stage.setScene(scene);
 
         btnConfirm.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
 
+                stage.close();
+                CompletedOrder completedOrder = new CompletedOrder();
+                completedOrder.start(stage);
             }
         });
 
         btnCancel.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
+                stage.close();
+                LoginStage1 loginStage1 = new LoginStage1();
+                loginStage1.start(stage);
             }
         });
 
-
-
+        stage.show();
     }
-
-
 }
