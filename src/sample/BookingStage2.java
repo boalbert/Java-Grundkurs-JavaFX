@@ -60,9 +60,6 @@ public class BookingStage2 extends Application {
                 Controller.choiceMovie = comboBoxMovies.getValue().toString();
                 Controller.choiceDate = datePicker.getValue().toString();
                 Controller.choiceSeats = comboBoxSeats.getValue().toString();
-                System.out.println(datePicker.getValue());
-                System.out.println(comboBoxMovies.getValue());
-                System.out.println(comboBoxSeats.getValue());
 
                 stage.close();
                 OrderConfirmation orderConfirmation = new OrderConfirmation();

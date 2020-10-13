@@ -11,7 +11,9 @@ public class Main extends Application {
         // Loading database's
         Save.readFile();
         Save.readMovieFile();
+        Controller.copyright.setStyle("-fx-font-size: 70%");
         launch(args);
+        
     }
 
     @Override

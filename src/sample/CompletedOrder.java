@@ -40,8 +40,29 @@ public class CompletedOrder extends Application {
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setPadding(new Insets(10,10,10,10));
 
+        Label label = new Label("Order Complete"); label.setId("header-text");
+        label.setText("Ticket Recipe");
+        TextArea ticketInfo = new TextArea(
+                "Name: "+Controller.customerMap.get("cktest@test.se").getFirstName() +
+                " "+ Controller.customerMap.get("cktest@test.se").getLastName() +
+                "\nEmail: " + Controller.customerMap.get("cktest@test.se").getEmail() +
+                "\n\nMovie: " + Controller.choiceMovie + "\nSeats: "+ Controller.choiceSeats+
+                "\nDate: "+ Controller.choiceDate + "\n"+Controller.copyright
+                );
 
+        Button buttonExit = new Button("Exit");
+        buttonExit.setAlignment(Pos.BOTTOM_CENTER);
 
+        gridPane.add(label,0,0);
+        gridPane.add(ticketInfo,0,1);
+        gridPane.add(buttonExit,0,2);
+
+        buttonExit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                finalStage.close();
+            }
+        });
 
         Scene sceneCO = new Scene(gridPane);
         finalStage.setScene(sceneCO);
