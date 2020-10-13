@@ -46,7 +46,7 @@ public class BookingStage2 extends Application {
 
         ObservableList<String> optionsMovies =
             FXCollections.observableArrayList(
-
+                "Interstellar"
             );
         final ComboBox comboBoxMovies = new ComboBox(optionsMovies);
 
@@ -60,9 +60,15 @@ public class BookingStage2 extends Application {
         accept.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                Controller.choiceMovie = comboBoxMovies.getValue().toString();
                 System.out.println(datePicker.getValue());
                 System.out.println(comboBoxMovies.getValue());
                 System.out.println(comboBoxSeats.getValue());
+
+                stage.close();
+                Payment payment = new Payment();
+                payment.start(stage);
+
             }
         });
 
@@ -83,7 +89,7 @@ public class BookingStage2 extends Application {
         Scene sceneBS = new Scene(gridBooking);
         stage.setScene(sceneBS);
         stage.setTitle("Booking");
-        sceneBS.getStylesheets().add("sample/stylesheet.css");
+
 
         cancel.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -105,7 +111,7 @@ public class BookingStage2 extends Application {
                 }
             }
         });
-
+        sceneBS.getStylesheets().add("sample/stylesheet.css");
         stage.show();
     }
 }
