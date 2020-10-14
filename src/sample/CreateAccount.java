@@ -65,6 +65,7 @@ public class CreateAccount extends Application {
         gridCA.add(cancel, 1, 6);
         gridCA.add(errorText, 0, 7,2,1);
         gridCA.setHalignment(errorText, HPos.CENTER);
+        gridCA.add(Controller.copyright, 0, 8);
 
         create.setOnAction(new EventHandler<ActionEvent>() {
             @Override

@@ -14,6 +14,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -63,11 +65,12 @@ public class LoginStage1 extends Application {
         Button btnLogin = new Button("Login");
         btnLogin.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         btnLogin.setOnAction(actionEvent -> {
-            System.out.println("Username accepted");
             if (Controller.customerMap.containsKey(tfEmail.getText()))    {
+                System.out.println("Username accepted");
                 if (tfPassword.getText().equals(Controller.customerMap.get(tfEmail.getText()).getPassword())) {
                     System.out.println("Password accepted");
                     errorText.setVisible(false);
+                    Controller.currentUser = tfEmail.getText();
                     BookingStage2 bookingStage2 = new BookingStage2();
                     bookingStage2.start(stage);
 
@@ -109,6 +112,7 @@ public class LoginStage1 extends Application {
         // Textfields
         gridPane.add(tfEmail, 0, 1);
         gridPane.add(tfPassword, 1, 1);
+        gridPane.add(Controller.copyright,0,6);
         // Button
         gridPane.add(btnCreateAccount, 0, 2);
         gridPane.add(btnLogin, 1, 2);
@@ -125,12 +129,40 @@ public class LoginStage1 extends Application {
             @Override
             public void handle(KeyEvent keyEvent) {
                 KeyCode key = keyEvent.getCode();
-                if (key == KeyCode.ENTER)   {
+                if (key == KeyCode.P) {
+                    Controller.printAll();
                 }
             }
         });
 
-        btnLogin.setOnKeyPressed(new EventHandler<KeyEvent>() {
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                KeyCode key = keyEvent.getCode();
+                if (key == KeyCode.ENTER)   {
+                    if (Controller.customerMap.containsKey(tfEmail.getText()))    {
+                        System.out.println("Username accepted");
+                        if (tfPassword.getText().equals(Controller.customerMap.get(tfEmail.getText()).getPassword())) {
+                            System.out.println("Password accepted");
+                            errorText.setVisible(false);
+                            Controller.currentUser = tfEmail.getText();
+                            BookingStage2 bookingStage2 = new BookingStage2();
+                            bookingStage2.start(stage);
+                        }
+                        else {
+                            errorText.setText("Wrong Password!");
+                            errorText.setVisible(true);
+                        }
+                    }
+                    else {
+                        errorText.setText("Wrong Username!");
+                        errorText.setVisible(true);
+                    }
+                }
+            }
+        });
+
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
                 KeyCode key = keyEvent.getCode();

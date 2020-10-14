@@ -31,7 +31,8 @@ public class OrderConfirmation extends Application {
         gridPane.setHgap(5);
         gridPane.setVgap(5);
 
-        Label label = new Label("Order Confirmation");
+
+        Label label = new Label("- Order Confirmation - OrderID-["+Controller.currentID+"]");
         Text text1 = new Text("Movie: "+ Controller.choiceMovie); text1.setId("displayText");
         Text text2 = new Text("Seats: "+Controller.choiceSeats);    text2.setId("displayText");
         Text text3 = new Text("Date: "+Controller.choiceDate);  text3.setId("displayText");
@@ -44,6 +45,7 @@ public class OrderConfirmation extends Application {
         gridPane.add(text3,0,3);
         gridPane.add(accept,0,4);
         gridPane.add(cancel,0,5);
+        gridPane.add(Controller.copyright,0,6);
 
         Scene sceneOC = new Scene(gridPane);
         stage.setScene(sceneOC);

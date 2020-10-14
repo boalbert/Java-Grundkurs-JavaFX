@@ -78,22 +78,33 @@ public class Payment extends Application {
         Scene scene= new Scene(gridPane4, 400, 400);
         stage.setScene(scene);
 
+
+
         btnConfirm.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
-                stage.close();
-                CompletedOrder completedOrder = new CompletedOrder();
-                completedOrder.start(stage);
+                if(terms.isSelected()) {
+                    PaymentRecipe.createPaymentRecipe(
+                            cbPaymentOptions.getValue().toString(),
+                            tfCreditCardNumber.getText(),
+                            cvvField.getText()
+                    );
+                    Recipe.createRecipe();
+                    stage.close();
+                    CompletedOrder completedOrder = new CompletedOrder();
+                    completedOrder.start(stage);
+                }
             }
         });
 
         btnCancel.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                stage.close();
-                LoginStage1 loginStage1 = new LoginStage1();
-                loginStage1.start(stage);
+                if (terms.isSelected()) {
+                    stage.close();
+                    LoginStage1 loginStage1 = new LoginStage1();
+                    loginStage1.start(stage);
+                }
             }
         });
 

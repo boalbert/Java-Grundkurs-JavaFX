@@ -7,13 +7,11 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     public static void main(String[] args) {
-
-        // Loading database's
-        Save.readFile();
-        Save.readMovieFile();
         Controller.copyright.setStyle("-fx-font-size: 70%");
+
+        Save.loadDatabases();
+
         launch(args);
-        
     }
 
     @Override

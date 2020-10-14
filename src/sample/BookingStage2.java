@@ -33,13 +33,15 @@ public class BookingStage2 extends Application {
         gridBooking.setPadding(new Insets(10, 10, 10, 10));
         gridBooking.setAlignment(Pos.CENTER);
         gridBooking.setVgap(5);
-        gridBooking.setHgap(5);
+        gridBooking.setHgap(2);
         Button cancel = new Button("Cancel");
         Label bookingHeader = new Label("Booking");
         Text selectMovie = new Text("Movie");
         Text selectDate = new Text("Select Date");
         Text selectSeats = new Text("Seats");
+        Text confirmAge = new Text("Over age 18 ");
         DatePicker datePicker = new DatePicker();
+        CheckBox checkBox = new CheckBox("Confirm age");
 
         ObservableList<String> optionsMovies =
             FXCollections.observableArrayList(
@@ -57,13 +59,17 @@ public class BookingStage2 extends Application {
         accept.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                Controller.choiceMovie = comboBoxMovies.getValue().toString();
-                Controller.choiceDate = datePicker.getValue().toString();
-                Controller.choiceSeats = comboBoxSeats.getValue().toString();
+                if (checkBox.isSelected()) {
+                    Recipe.createID();
+                    Controller.choiceMovie = comboBoxMovies.getValue().toString();
+                    Controller.choiceDate = datePicker.getValue().toString();
+                    Controller.choiceSeats = (int) comboBoxSeats.getValue();
 
-                stage.close();
-                OrderConfirmation orderConfirmation = new OrderConfirmation();
-                orderConfirmation.start(stage);
+                    stage.close();
+                    OrderConfirmation orderConfirmation = new OrderConfirmation();
+                    orderConfirmation.start(stage);
+                }
+                else System.out.println("Error in accept.setOnAction in BookingStage2");
             }
         });
 
@@ -74,12 +80,15 @@ public class BookingStage2 extends Application {
 
         gridBooking.add(comboBoxMovies, 1,2);
         gridBooking.add(comboBoxSeats,1,3);
-        gridBooking.add(accept, 0,5);
-        gridBooking.add(cancel,1,5);
+        gridBooking.add(accept, 0,6);
+        gridBooking.add(cancel,1,6);
         gridBooking.add(selectMovie, 0,2);
         gridBooking.add(selectDate,0,1);
         gridBooking.add(selectSeats,0,3);
         gridBooking.add(datePicker, 1, 1);
+        gridBooking.add(Controller.copyright,0,7);
+        gridBooking.add(confirmAge,0,5);
+        gridBooking.add(checkBox,1,5);
 
         Scene sceneBS = new Scene(gridBooking);
         stage.setScene(sceneBS);
@@ -109,17 +118,19 @@ public class BookingStage2 extends Application {
         sceneBS.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
-                KeyCode key = keyEvent.getCode();
-                if (key == KeyCode.ENTER) {
+                if (checkBox.isSelected()) {
+                    KeyCode key = keyEvent.getCode();
+                    if (key == KeyCode.ENTER) {
+                        Recipe.createID();
 
-                    Controller.choiceMovie = comboBoxMovies.getValue().toString();
-                    System.out.println(datePicker.getValue());
-                    System.out.println(comboBoxMovies.getValue());
-                    System.out.println(comboBoxSeats.getValue());
+                        Controller.choiceMovie = comboBoxMovies.getValue().toString();
+                        Controller.choiceDate = datePicker.getValue().toString();
+                        Controller.choiceSeats = (int) comboBoxSeats.getValue();
 
-                    stage.close();
-                    OrderConfirmation orderConfirmation = new OrderConfirmation();
-                    orderConfirmation.start(stage);
+                        stage.close();
+                        OrderConfirmation orderConfirmation = new OrderConfirmation();
+                        orderConfirmation.start(stage);
+                    }
                 }
             }
         });
