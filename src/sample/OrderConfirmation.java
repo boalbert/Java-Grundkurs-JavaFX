@@ -24,18 +24,22 @@ public class OrderConfirmation extends Application {
     @Override
     public void start(Stage stage) {
 
+        // Creating and formatting Gridpane
         GridPane gridPane = new GridPane();
-        gridPane.setMinSize(400,200);
+        gridPane.setMinSize(400,400);
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setPadding(new Insets(10,10,10,10));
         gridPane.setHgap(5);
         gridPane.setVgap(5);
 
+        // Header text
+        Label label = new Label("Order Confirmation - OrderID-["+Controller.currentID+"]");
+        label.setId("header-text");
 
-        Label label = new Label("- Order Confirmation - OrderID-["+Controller.currentID+"]");
-        Text text1 = new Text("Movie: "+ Controller.choiceMovie); text1.setId("displayText");
-        Text text2 = new Text("Seats: "+Controller.choiceSeats);    text2.setId("displayText");
-        Text text3 = new Text("Date: "+Controller.choiceDate);  text3.setId("displayText");
+        Text text1 = new Text("Movie: "+ Controller.choiceMovie);
+        Text text2 = new Text("Seats: "+Controller.choiceSeats);
+        Text text3 = new Text("Date: "+Controller.choiceDate);
+
         Button accept = new Button("Accept");
         Button cancel = new Button("Cancel");
 
@@ -92,6 +96,7 @@ public class OrderConfirmation extends Application {
                 }
             }
         });
+
         sceneOC.getStylesheets().add("sample/stylesheet.css");
         stage.show();
 

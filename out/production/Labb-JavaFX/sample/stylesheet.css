@@ -1,24 +1,26 @@
 .root {
     -fx-font-size: 12;
-    -fx-font-family: Arial;
-    -fx-background-color: beige;
+    -fx-font-family: SansSerif;
+    -fx-background-color: #ffffff;
     -fx-text-fill: #000000;
-    -fx-border-color: cornflowerblue;
+}
+
+#standardButton {
+
 }
 
 #text   {
-    -fx-font-size: 12;
-    -fx-font-family: Arial;
+    /*-fx-font-size: 12;*/
+    /*-fx-font-family: Arial;*/
 }
 
 #header-text {
     -fx-font-weight: Bold;
     -fx-font-size: 20;
-    -fx-font-family: Arial;
 }
 
 #displayText    {
-    -fx-font-weight: Bold;
-    -fx-font-size: 18;
-    -fx-font-family: Arial;
+    /*-fx-font-weight: Bold;*/
+    /*-fx-font-size: 18;*/
+    /*-fx-font-family: Arial;*/
 }

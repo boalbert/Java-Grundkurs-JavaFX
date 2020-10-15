@@ -29,13 +29,15 @@ public class BookingStage2 extends Application {
     public void start(Stage stage) {
 
         GridPane gridBooking = new GridPane();
-        gridBooking.setMinSize(400, 200);
+        gridBooking.setMinSize(400, 400);
         gridBooking.setPadding(new Insets(10, 10, 10, 10));
         gridBooking.setAlignment(Pos.CENTER);
         gridBooking.setVgap(5);
         gridBooking.setHgap(2);
+
         Button cancel = new Button("Cancel");
         Label bookingHeader = new Label("Booking");
+        bookingHeader.setId("header-text");
         Text selectMovie = new Text("Movie");
         Text selectDate = new Text("Select Date");
         Text selectSeats = new Text("Seats");
@@ -75,20 +77,20 @@ public class BookingStage2 extends Application {
 
         gridBooking.setHalignment(bookingHeader, HPos.CENTER);
         gridBooking.add(bookingHeader,0,0,2,1);
-        bookingHeader.setId("booking-header");
-        bookingHeader.setStyle("-fx-text-fill: black; -fx-font-size: 30;");
 
         gridBooking.add(comboBoxMovies, 1,2);
         gridBooking.add(comboBoxSeats,1,3);
-        gridBooking.add(accept, 0,6);
-        gridBooking.add(cancel,1,6);
+
         gridBooking.add(selectMovie, 0,2);
         gridBooking.add(selectDate,0,1);
         gridBooking.add(selectSeats,0,3);
         gridBooking.add(datePicker, 1, 1);
-        gridBooking.add(Controller.copyright,0,7);
+
         gridBooking.add(confirmAge,0,5);
         gridBooking.add(checkBox,1,5);
+        gridBooking.add(accept, 1,8);
+        gridBooking.add(cancel,1,9);
+        gridBooking.add(Controller.copyright,0,12);
 
         Scene sceneBS = new Scene(gridBooking);
         stage.setScene(sceneBS);

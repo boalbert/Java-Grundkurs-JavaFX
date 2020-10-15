@@ -34,14 +34,15 @@ public class CompletedOrder extends Application {
     public void start(Stage finalStage) {
 
         GridPane gridPane = new GridPane();
-        gridPane.setMinSize(400,200);
+        gridPane.setMinSize(400,400);
         gridPane.setVgap(5);
         gridPane.setHgap(5);
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setPadding(new Insets(10,10,10,10));
 
-        Label label = new Label("Order Complete"); label.setId("header-text");
-        label.setText("Ticket Recipe");
+        Label lblHeader = new Label("Ticket Recipe");
+        lblHeader.setId("header-text");
+
         TextArea ticketInfo = new TextArea(
                 "Name: "+Controller.customerMap.get(Controller.currentUser).getFirstName() +
                 " "+ Controller.customerMap.get(Controller.currentUser).getLastName() +
@@ -53,10 +54,11 @@ public class CompletedOrder extends Application {
         Button buttonExit = new Button("Exit");
         buttonExit.setAlignment(Pos.BOTTOM_CENTER);
 
-        gridPane.add(label,0,0);
+        gridPane.add(lblHeader,0,0);
         gridPane.add(ticketInfo,0,1);
         gridPane.add(buttonExit,0,2);
         gridPane.add(Controller.copyright,0,3);
+        gridPane.setHalignment(lblHeader, HPos.CENTER);
 
         buttonExit.setOnAction(new EventHandler<ActionEvent>() {
             @Override

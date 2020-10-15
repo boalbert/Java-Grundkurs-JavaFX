@@ -76,6 +76,7 @@ public class Payment extends Application {
 
         stage.setTitle("Payment");
         Scene scene= new Scene(gridPane4, 400, 400);
+        scene.getStylesheets().add("sample/stylesheet.css");
         stage.setScene(scene);
 
 

@@ -9,10 +9,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
@@ -28,7 +25,7 @@ public class LoginStage1 extends Application {
         stage.setTitle("Login");
 
         // Header
-        Label lblHeader = new Label("Login");
+        Label lblHeader = new Label("Sign In");
         // Setting ID for stylesheet
         lblHeader.setId("header-text");
 
@@ -51,13 +48,14 @@ public class LoginStage1 extends Application {
             createAccount.start(stage);
         });
 
+
+
         Button btnExit = new Button("Exit");
-        btnExit.setStyle("-fx-background-color: #d73e3e");
-        btnExit.setAlignment(Pos.BOTTOM_CENTER);
         btnExit.setCancelButton(true);
         btnExit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+
                 stage.close();
             }
         });
@@ -100,23 +98,22 @@ public class LoginStage1 extends Application {
         gridPane.add(errorText,0,3,2,1);
         gridPane.setHalignment(errorText, HPos.CENTER);
 
-
         // Added placeholder text
         gridPane.add(lblHeader, 0, 0, 2, 1);
         // Centering lblHeader
         GridPane.setHalignment(lblHeader, HPos.CENTER);
         gridPane.setValignment(btnExit, VPos.BOTTOM);
-        gridPane.setHalignment(btnExit, HPos.RIGHT);
+        gridPane.setHalignment(btnExit, HPos.LEFT);
 
 
         // Textfields
-        gridPane.add(tfEmail, 0, 1);
-        gridPane.add(tfPassword, 1, 1);
-        gridPane.add(Controller.copyright,0,6);
+        gridPane.add(tfEmail, 0, 3);
+        gridPane.add(tfPassword, 1, 3);
+        gridPane.add(Controller.copyright,0,12);
         // Button
-        gridPane.add(btnCreateAccount, 0, 2);
-        gridPane.add(btnLogin, 1, 2);
-        gridPane.add(btnExit,1,5);
+        gridPane.add(btnCreateAccount, 0, 4);
+        gridPane.add(btnLogin, 1, 4);
+        gridPane.add(btnExit,0,9);
 
         // Creating scene
         Scene scene = new Scene(gridPane);

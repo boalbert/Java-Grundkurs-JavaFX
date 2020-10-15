@@ -23,7 +23,7 @@ public class CreateAccount extends Application {
     public void start(Stage stage) {
 
         GridPane gridCA = new GridPane();
-        gridCA.setMinSize(600, 300);
+        gridCA.setMinSize(400, 400);
         gridCA.setAlignment(Pos.CENTER);
         gridCA.setPadding(new Insets(10, 10, 10, 10));
         gridCA.setHgap(5);
@@ -131,7 +131,7 @@ public class CreateAccount extends Application {
                         Controller.customerMap.put(newCustomer.getEmail(), newCustomer);
                         Save.saveMap(Controller.customerMap);
                         System.out.println("Customer added to HashMap(customerMap)");
-                        stage.close();
+
                         LoginStage1 loginStage1 = new LoginStage1();
                         loginStage1.start(stage);
                     }
